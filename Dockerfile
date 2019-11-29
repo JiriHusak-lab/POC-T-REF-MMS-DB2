@@ -1,10 +1,12 @@
 FROM ibmcom/db2
 
 RUN mkdir /var/custom \
-&& chown root ./database/config/db2inst1/sqllib/security/db2ckpw \
-&& chown root ./database/config/db2inst1/sqllib/security/db2chpw \
-&& chmod -r-s--x--x ./database/config/db2inst1/sqllib/security/db2ckpw \
-&& chmod -r-s--x--x ./database/config/db2inst1/sqllib/security/db2chpw
+&& chown root /database/config/db2inst1/sqllib/security/db2ckpw \
+&& chown root /database/config/db2inst1/sqllib/security/db2chpw \
+&& chmod -r-s--x--x /database/config/db2inst1/sqllib/security/db2ckpw \
+&& chmod -r-s--x--x /database/config/db2inst1/sqllib/security/db2chpw \
+&& chmod -r-s--x--x /opt/ibm/db2/V11.5/security64/db2ckpw \
+&& chmod -r-s--x--x /opt/ibm/db2/V11.5/security64/db2chpw
 
 COPY createschema.sh /var/custom
 RUN chmod a+x /var/custom/createschema.sh
